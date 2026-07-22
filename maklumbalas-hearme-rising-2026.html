@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maklum Balas HEAR ME RISING 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Cormorant+Garamond:wght@400;600&family=Poppins:wght@400;500;600;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #0d1b3e;
+    color: #1a1a1a;
+    min-height: 100vh;
+    padding: 0 0 40px 0;
+  }
+  .header {
+    background: linear-gradient(135deg, #0d1b3e 0%, #16296b 100%);
+    padding: 28px 20px 32px;
+    text-align: center;
+    color: white;
+    border-bottom: 4px solid #d4af37;
+  }
+  .header .presents {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: #cfd6ea;
+    margin-bottom: 6px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  .header h1 span { color: #d4af37; }
+  .header .sub {
+    margin-top: 8px;
+    font-size: 13px;
+    background: #00aeef;
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+  .header .tag {
+    margin-top: 6px;
+    font-size: 11.5px;
+    color: #e91e8c;
+    font-weight: 600;
+  }
+  .info-bar {
+    background: white;
+    color: #0d1b3e;
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .container {
+    max-width: 480px;
+    margin: 24px auto 0;
+    padding: 0 18px;
+  }
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    margin-bottom: 16px;
+  }
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    color: #0d1b3e;
+    font-size: 18px;
+    margin-bottom: 4px;
+    border-left: 4px solid #d4af37;
+    padding-left: 10px;
+  }
+  .card .note {
+    font-size: 12px;
+    color: #888;
+    margin: 8px 0 16px 10px;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #0d1b3e;
+    margin: 16px 0 6px;
+  }
+  label .req { color: #e91e8c; }
+  input, select, textarea {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1.5px solid #d8dce8;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    background: #fafbff;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #00aeef;
+  }
+  .rating-group {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+  .rating-option {
+    flex: 1;
+    text-align: center;
+    border: 1.5px solid #d8dce8;
+    border-radius: 8px;
+    padding: 10px 4px;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #888;
+  }
+  .rating-option input { display: none; }
+  .rating-option.selected {
+    border-color: #00aeef;
+    background: #e6f7ff;
+    color: #0d1b3e;
+  }
+  .rating-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10.5px;
+    color: #aaa;
+    margin-top: 4px;
+    padding: 0 2px;
+  }
+  .checkbox-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .checkbox-option {
+    display: flex; align-items: center; gap: 8px;
+    border: 1.5px solid #d8dce8;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .checkbox-option input { width: auto; }
+  .checkbox-option.selected { border-color: #00aeef; background: #e6f7ff; }
+  .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+  .radio-option {
+    display: flex; align-items: center; gap: 8px;
+    border: 1.5px solid #d8dce8;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .radio-option input { width: auto; }
+  .radio-option.selected { border-color: #00aeef; background: #e6f7ff; }
+  .submit-btn {
+    width: 100%;
+    background: #0d1b3e;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 18px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+  .submit-btn:active { background: #16296b; }
+  .submit-btn:disabled { background: #aaa; }
+  .success-box {
+    display: none;
+    background: #e6f9ec;
+    border: 1.5px solid #2ecc71;
+    color: #1a7a3c;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .footer-note {
+    text-align: center;
+    color: #cfd6ea;
+    font-size: 11px;
+    padding: 20px 20px 0;
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="presents">Persatuan Advokasi Pendengaran Malaysia (HEAR ME)</div>
+    <h1>HEAR ME <span>RISING</span> 2026</h1>
+    <div class="sub">MAKLUM BALAS PESERTA</div>
+    <div class="tag">Next Generation Leadership</div>
+  </div>
+
+  <div class="info-bar">
+    📅 9 – 11 Oktober 2026 &nbsp;|&nbsp; Terima kasih kerana meluangkan masa!
+  </div>
+
+  <div class="container">
+
+    <div class="card" id="formCard">
+      <h2>Borang Maklum Balas</h2>
+      <div class="note">Maklum balas anda membantu kami menambah baik program HEAR ME RISING pada masa hadapan. Ambil masa 3-5 minit sahaja.</div>
+
+      <form id="feedbackForm">
+        <label>Nama Penuh <span class="req">*</span></label>
+        <input type="text" id="fullName" required placeholder="Nama anda">
+
+        <label>Rating Keseluruhan Program <span class="req">*</span></label>
+        <div class="rating-group" data-name="overallRating">
+          <label class="rating-option"><input type="radio" name="overallRating" value="1">1</label>
+          <label class="rating-option"><input type="radio" name="overallRating" value="2">2</label>
+          <label class="rating-option"><input type="radio" name="overallRating" value="3">3</label>
+          <label class="rating-option"><input type="radio" name="overallRating" value="4">4</label>
+          <label class="rating-option"><input type="radio" name="overallRating" value="5">5</label>
+        </div>
+        <div class="rating-labels"><span>Kurang Memuaskan</span><span>Sangat Memuaskan</span></div>
+
+        <label>Sesi Paling Bermanfaat (boleh pilih lebih dari satu) <span class="req">*</span></label>
+        <div class="checkbox-group" id="sessionGroup">
+          <label class="checkbox-option"><input type="checkbox" name="session" value="Who Am I? (Identiti)"> Who Am I? (Identiti)</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="It's Okay to Not Be Okay (Kesihatan Mental)"> It's Okay to Not Be Okay (Kesihatan Mental)</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="Understanding Your Community"> Understanding Your Community</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="Advocacy 101"> Advocacy 101</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="NGO Fundamentals"> NGO Fundamentals</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="Ethics, Integrity & Accountability"> Ethics, Integrity & Accountability</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="Team Challenge Night"> Team Challenge Night</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="What Kind of Leader Are You?"> What Kind of Leader Are You?</label>
+          <label class="checkbox-option"><input type="checkbox" name="session" value="My Action Plan"> My Action Plan</label>
+        </div>
+
+        <label>Kualiti Fasilitator/Penceramah <span class="req">*</span></label>
+        <div class="rating-group" data-name="facilitatorRating">
+          <label class="rating-option"><input type="radio" name="facilitatorRating" value="1">1</label>
+          <label class="rating-option"><input type="radio" name="facilitatorRating" value="2">2</label>
+          <label class="rating-option"><input type="radio" name="facilitatorRating" value="3">3</label>
+          <label class="rating-option"><input type="radio" name="facilitatorRating" value="4">4</label>
+          <label class="rating-option"><input type="radio" name="facilitatorRating" value="5">5</label>
+        </div>
+        <div class="rating-labels"><span>Kurang Memuaskan</span><span>Sangat Memuaskan</span></div>
+
+        <label>Penginapan & Makanan <span class="req">*</span></label>
+        <div class="rating-group" data-name="logisticsRating">
+          <label class="rating-option"><input type="radio" name="logisticsRating" value="1">1</label>
+          <label class="rating-option"><input type="radio" name="logisticsRating" value="2">2</label>
+          <label class="rating-option"><input type="radio" name="logisticsRating" value="3">3</label>
+          <label class="rating-option"><input type="radio" name="logisticsRating" value="4">4</label>
+          <label class="rating-option"><input type="radio" name="logisticsRating" value="5">5</label>
+        </div>
+        <div class="rating-labels"><span>Kurang Memuaskan</span><span>Sangat Memuaskan</span></div>
+
+        <label>Apa yang anda pelajari / impak program kepada anda? <span class="req">*</span></label>
+        <textarea id="impact" rows="3" required placeholder="Kongsikan pengalaman anda..."></textarea>
+
+        <label>Cadangan Penambahbaikan</label>
+        <textarea id="suggestions" rows="3" placeholder="Apa yang boleh kami perbaiki?"></textarea>
+
+        <label>Adakah anda akan mengesyorkan program ini kepada rakan/ahli keluarga? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="recommend" value="Ya, pasti!" required> Ya, pasti!</label>
+          <label class="radio-option"><input type="radio" name="recommend" value="Mungkin"> Mungkin</label>
+          <label class="radio-option"><input type="radio" name="recommend" value="Tidak"> Tidak</label>
+        </div>
+
+        <label>Testimoni (untuk bahan promosi HEAR ME, pilihan)</label>
+        <textarea id="testimonial" rows="2" placeholder="Boleh kami kongsikan pandangan anda di media sosial/laman web HEAR ME?"></textarea>
+
+        <label class="checkbox-option" style="margin-top:6px;"><input type="checkbox" id="consent"> Saya bersetuju testimoni saya digunakan untuk bahan promosi HEAR ME</label>
+
+        <button type="submit" class="submit-btn" id="submitBtn">HANTAR MAKLUM BALAS</button>
+      </form>
+
+      <div class="success-box" id="successBox">
+        ✅ Terima kasih atas maklum balas anda!<br>
+        Pandangan anda amat bernilai untuk penambahbaikan program HEAR ME akan datang. 💙
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    Persatuan Advokasi Pendengaran Malaysia (Hear Me) &nbsp;PPM-019-10-23062015<br>
+    admin@hearmemalaysia.com &nbsp;|&nbsp; +60 19-757 5364
+  </div>
+
+<script>
+  const GAS_URL = 'https://script.google.com/macros/s/AKfycbzxmzcziLSWLCtf3f-lwOt5z-fPQIY_TaOLrHP3OJqXZNSf1M2sBk8ibsRjdLfjgFrP0A/exec';
+
+  const form = document.getElementById('feedbackForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  document.querySelectorAll('.rating-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const name = opt.querySelector('input').name;
+      document.querySelectorAll(`.rating-option input[name="${name}"]`).forEach(inp => {
+        inp.closest('.rating-option').classList.remove('selected');
+      });
+      opt.classList.add('selected');
+    });
+  });
+
+  document.querySelectorAll('.checkbox-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      opt.classList.toggle('selected');
+    });
+  });
+
+  document.querySelectorAll('.radio-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      const name = opt.querySelector('input').name;
+      document.querySelectorAll(`.radio-option input[name="${name}"]`).forEach(inp => {
+        inp.closest('.radio-option').classList.remove('selected');
+      });
+      opt.classList.add('selected');
+    });
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const overallRating = document.querySelector('input[name="overallRating"]:checked');
+    const facilitatorRating = document.querySelector('input[name="facilitatorRating"]:checked');
+    const logisticsRating = document.querySelector('input[name="logisticsRating"]:checked');
+    const recommend = document.querySelector('input[name="recommend"]:checked');
+    const sessions = Array.from(document.querySelectorAll('input[name="session"]:checked')).map(el => el.value);
+
+    if (!overallRating || !facilitatorRating || !logisticsRating || sessions.length === 0) {
+      alert('Sila lengkapkan semua rating dan pilih sekurang-kurangnya satu sesi.');
+      return;
+    }
+
+    const feedback = {
+      formType: 'feedback',
+      fullName: document.getElementById('fullName').value,
+      overallRating: overallRating.value,
+      sessions: sessions.join(', '),
+      facilitatorRating: facilitatorRating.value,
+      logisticsRating: logisticsRating.value,
+      impact: document.getElementById('impact').value,
+      suggestions: document.getElementById('suggestions').value,
+      recommend: recommend ? recommend.value : '',
+      testimonial: document.getElementById('testimonial').value,
+      consent: document.getElementById('consent').checked ? 'Ya' : 'Tidak',
+      submittedAt: new Date().toISOString()
+    };
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'MENGHANTAR...';
+
+    try {
+      const key = 'fb:' + Date.now() + ':' + Math.random().toString(36).slice(2, 7);
+      await window.storage.set(key, JSON.stringify(feedback), true);
+
+      try {
+        await fetch(GAS_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain' },
+          body: JSON.stringify(feedback)
+        });
+      } catch (gasErr) {
+        console.error('Google Sheet sync failed:', gasErr);
+      }
+
+      form.style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+    } catch (err) {
+      alert('Maaf, ralat berlaku. Sila cuba lagi.');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'HANTAR MAKLUM BALAS';
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -356,28 +356,44 @@
     submitBtn.textContent = 'MENGHANTAR...';
 
     try {
-      const key = 'fb:' + Date.now() + ':' + Math.random().toString(36).slice(2, 7);
-      await window.storage.set(key, JSON.stringify(feedback), true);
-
-      try {
-        await fetch(GAS_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(feedback)
-        });
-      } catch (gasErr) {
-        console.error('Google Sheet sync failed:', gasErr);
-      }
-
-      form.style.display = 'none';
-      document.getElementById('successBox').style.display = 'block';
+      submitViaIframe(feedback);
+      setTimeout(() => {
+        form.style.display = 'none';
+        document.getElementById('successBox').style.display = 'block';
+      }, 800);
     } catch (err) {
       alert('Maaf, ralat berlaku. Sila cuba lagi.');
       submitBtn.disabled = false;
       submitBtn.textContent = 'HANTAR MAKLUM BALAS';
     }
   });
+
+  function submitViaIframe(payload) {
+    const iframeName = 'hidden_submit_frame';
+    let iframe = document.getElementById(iframeName);
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.id = iframeName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+
+    const tempForm = document.createElement('form');
+    tempForm.action = GAS_URL;
+    tempForm.method = 'POST';
+    tempForm.target = iframeName;
+
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'payload';
+    input.value = JSON.stringify(payload);
+    tempForm.appendChild(input);
+
+    document.body.appendChild(tempForm);
+    tempForm.submit();
+    document.body.removeChild(tempForm);
+  }
 </script>
 
 </body>
